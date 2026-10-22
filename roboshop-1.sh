@@ -33,10 +33,20 @@ do
     fi
 
     #update route 53 record 
-    aws route53 change-resource-record-sets \
-    --hosted-zone-id $hosted_zone_id\
-    --change-batch '{"Changes":[{"Action":"UPSERT",
-    "ResourceRecordSet":{"Name":"'$r53_record'",
-    "Type":"A","TTL":1,"ResourceRecords":[{"Value":"'$IP'"}]}}]}'
+ 
+aws route53 change-resource-record-sets \
+  --hosted-zone-id "$hosted_zone_id" \
+  --change-batch '{
+    "Comment": "Inline update",
+    "Changes": [{
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "'"$r53_record"'",
+        "Type": "'"A"'",
+        "TTL": '"1"',
+        "ResourceRecords": [{"Value": "'"$IP"'"}]
+      }
+    }]
+  }'
 
 done 
