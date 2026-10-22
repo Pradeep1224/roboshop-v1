@@ -37,6 +37,6 @@ do
     --hosted-zone-id $hosted_zone_id\
     --change-batch '{"Changes":[{"Action":"UPSERT",
     "ResourceRecordSet":{"Name":"$r53_record",
-    "Type":"A","TTL":1,"ResourceRecords":[{"Value":"$IP"}]}}]}'
+    "Type":"A","TTL":1,"ResourceRecords":[{"Value":"'$IP'"}]}}]}'
 
 done 
