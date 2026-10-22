@@ -33,6 +33,7 @@ do
     fi
 
     #update route 53 record 
+    echo "Record: $r53_record"
  
 aws route53 change-resource-record-sets \
   --hosted-zone-id "$hosted_zone_id" \
@@ -48,6 +49,6 @@ aws route53 change-resource-record-sets \
       }
     }]
   }'
-
+    echo "updated r53 record for $instance"
 
 done 
