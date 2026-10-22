@@ -1,9 +1,9 @@
 #!/bin/bash
 
-ami_id=ami-0055977a6e828a4f4
-instance_type=t3.micro
-domain_name=pradeepverse.online
-hosted_zone_id=Z05446843FCZ0RI2Z1CIL
+ami_id="ami-0055977a6e828a4f4"
+instance_type="t3.micro"
+domain_name="pradeepverse.online"
+hosted_zone_id="Z05446843FCZ0RI2Z1CIL"
 
 for instance in $@
 do 
@@ -48,5 +48,6 @@ aws route53 change-resource-record-sets \
       }
     }]
   }'
+
 
 done 
