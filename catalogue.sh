@@ -85,7 +85,7 @@ validate $? "connecting to mongodb"
 
 
 if [ "$product_count" -eq 0 ]; then
-   mongosh --host "mongodb.$domain_name" </app/db/master-data.js
+   mongosh --host "mongodb.$domain_name" </app/db/master-data.js &>> $logs_file
      validate $? "Loading products"
 else 
     echo "products are already loaded..${Y}SKIPPING${N}"
