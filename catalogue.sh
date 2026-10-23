@@ -49,14 +49,19 @@ fi
 mkdir -p /app
 validate $? "creating app directory"
 
-curl -L -o /tmp/catalogue.zip https://raw.githubusercontent.com/daws-92s/roboshop-documentation/refs/heads/main/artifacts/catalogue-v4.zip
+curl -L -o /tmp/catalogue.zip https://raw.githubusercontent.com/daws-92s/roboshop-documentation/refs/heads/main/artifacts/catalogue-v4.zip &>> $logs_file
 validate $? "downloading Catalouge"
+
 cd /app
 unzip /tmp/catalogue.zip &>> $logs_file
+
 validate $? "Unzipping Catalogue"
+
 npm install &>> $logs_file
 validate $? "Installing dependencies"
+
 sed -i "s/DOMAIN_NAME/$domain_name" "$script_dir/catalogue.service"
+
 cp "$script_dir/catalogue.service" /etc/systemd/system/catalogue.service
 
 
