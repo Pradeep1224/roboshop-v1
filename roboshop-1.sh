@@ -33,7 +33,7 @@
      r53_record="$domain_name"
      fi
 
-     update route 53 record 
+     #update route 53 record 
      echo "Record: $r53_record"
  
  aws route53 change-resource-record-sets \
