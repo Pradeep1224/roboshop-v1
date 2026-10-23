@@ -43,9 +43,14 @@ echo "export JAVA_HOME=$(dirname $(dirname $(readlink -f /usr/bin/java)))" > /et
 source /etc/profile.d/java.sh
 echo $JAVA_HOME
 validate $? "setting JAVA_HOME for maven"
+id roboshop &>> $logs_file
+if [ $? -ne 0 ] ; then
 
 useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
-validate $? "creating app user"
+validate $? "creating application/System user"
+else 
+    echo -e "$(timestamp) [INFO] System User Already Exists.. ${Y}SKIPPING${N}"
+fi
 
 rm -rf /app
 validate $? "removing old code"
