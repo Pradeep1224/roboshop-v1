@@ -1,8 +1,8 @@
 user_id=$(id -u)
 logs_folder="/var/logs/roboshop"
 logs_file="${logs_folder}/${0}.log"
-domain_name="pradeepverse.online"\
-script_dir=$(dirname "$(realpath "$0"))"
+domain_name="pradeepverse.online"
+script_dir=$(dirname "$(realpath "$0")")
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
