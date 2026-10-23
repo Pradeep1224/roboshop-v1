@@ -15,7 +15,7 @@ do
      --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=roboshop-$instance}]" \
    --query 'Instances[0].InstanceId' \
     --output text )
-    echo "$Instance ID: $instance_id"
+    echo "Instance ID: $instance_id"
 
     if [ $instance != "frontend" ]; then
         IP=$(aws ec2 describe-instances \
