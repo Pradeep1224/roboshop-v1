@@ -11,8 +11,8 @@ do
     instance_id=$(aws ec2 run-instances \
     --image-id $ami_id \
     --instance-type $instance_type \
-    --security-groups "roboshop-common" "roboshop-$instance"\
-     --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=roboshop-$instance}]"\
+    --security-groups "roboshop-common" "roboshop-$instance" \
+     --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=roboshop-$instance}]" \
    --query "Instances[0].InstanceId" \
     --output text)
     echo "$Instance ID: $instance_id"
