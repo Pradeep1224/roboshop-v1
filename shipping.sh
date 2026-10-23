@@ -72,10 +72,17 @@ cp "$script_dir/shipping.service" /etc/systemd/system/shipping.service
  dnf install mysql -y  &>> $logs_file
  validate $? "installing mysql client"
 
+ 
+mysql -h "mysql.$domain_name" -uroot -pRoboShop@1 < /app/db/master-data.sql
+validate $? "Loading Shipping Data"
+
+
  systemctl daemon-reload  &>> $logs_file
 systemctl enable shipping  &>> $logs_file
 systemctl start shipping &>> $logs_file
 validate $? "starting and enabling shipping"
+
+
 
 
 
