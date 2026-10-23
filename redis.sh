@@ -28,7 +28,8 @@ timestamp(){
 }
 
 
-echo "$(timestamp) [INFO] ====script started execution==="
+echo "$(timestamp) [INFO] ====script started execution===" | tee -a $logs_file
+
 
 dnf module disable redis -y &>> $logs_file
 dnf module enable redis:7 -y &>> $logs_file
@@ -42,4 +43,8 @@ systemctl enable redis
 systemctl start redis
 
 validate $? "enable and start redis"
+
+echo "$(timestamp) [INFO] time taken $SECONDS"
+echo "$(timestamp) [INFO] ====script completed execution===" | tee -a $logs_file
+
 
