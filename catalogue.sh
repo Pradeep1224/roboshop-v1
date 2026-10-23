@@ -12,8 +12,7 @@ N="\e[0m"
     echo "please run with sudo access......."
     exit 1
 fi
-rm -rf /app
-validate $? "removing old directory"
+
 mkdir -p $logs_folder
 echo "Script started at: $(date +"%F %T")"
 
@@ -33,6 +32,7 @@ timestamp(){
 
 echo "$(timestamp) [INFO] ====script started execution===" | tee -a $logs_file
 
+
 dnf module disable nodejs -y &>> $logs_file
 dnf module enable nodejs:24 -y &>> $logs_file
 dnf install nodejs -y &>> $logs_file
@@ -46,7 +46,8 @@ validate $? "creating application/System user"
 else 
     echo -e "$(timestamp) [INFO] System User Already Exists.. ${Y}SKIPPING${N}"
 fi
-
+rm -rf /app
+validate $? "removing old directory"
 mkdir -p /app
 validate $? "creating app directory"
 
