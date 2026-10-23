@@ -76,7 +76,7 @@ validate $? "Starting and enabling Catalogue"
 cp "$script_dir/mongo.repo" /etc/yum.repos.d/mongo.repo
 validate $? "Adding mongodb repo"
 
-dnf install mongodb-mongosh -y
+dnf install mongodb-mongosh -y &>> $logs_file
 validate $? "installing mongodb client"
 
 echo "$(timestamp) [INFO] time taken $SECONDS"
